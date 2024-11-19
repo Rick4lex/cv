@@ -1,0 +1,217 @@
+/* --css-- */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #F8EDD2;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-social img {
+    height: 50px; 
+    width: 50px;
+}
+    
+
+header img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+header h1 {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #3A2E27;
+}
+
+header h2 {
+    font-size: 18px;
+    color: #795548ff;
+}
+
+@media (max-width: 768px) {
+    .content {
+        display: grid;
+        grid-template-columns: 2fr; /* En pantallas pequeñas, una sola columna */
+        gap: 10px;
+    }
+
+    .sidebar {
+        border-right: none; /* Elimina la separación en pantallas pequeñas */
+        padding-right: 0;
+    }
+}
+
+.sidebar ul {
+    font-family: 'Times New Roman', Times, serif;
+    list-style-type: none;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.sidebar ul li {
+    margin-bottom: 19px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #9d00ff;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section h3 {
+    Ricardo Alcarez
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    color: #3A2E27;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e08c79;
+    padding-bottom: 5px;
+}
+
+section p, section ul {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    color: #666;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 10px 15px;
+    margin-right: 5px;
+    background-color: #e08c79;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background-color: #d2695d;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+    color: #181515;
+}
+
+.carousel-container img{
+    border-radius: 10px;
+
+}
+
+/* La pista que contiene los ítems del carrusel */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+/* Ítems del carrusel */
+.carousel-item {
+    flex: 1 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 20px;
+    background-color: #e7cab9;
+    border: 1px solid #ddd;
+    margin: 5px;
+    
+}
+
+/* Botones de navegación */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel-btn.prev {
+    left: 0;
+}
+
+.carousel-btn.next {
+    right: 0;
+}
+
+/* Filtro */
+.filter-container {
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 10px 15px;
+    margin-right: 5px;
+    background-color: #e08c79;
+    border: none; 
+    color: white;
+    cursor: pointer;
+}
+
+
+.filter-btn:hover {
+    background-color: #d2695d;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+footer {
+   background-color: #e08c7934;
+   text-align: center;
+   bottom: 0;
+   margin: 40px auto;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: #e08c79;
+    width: 100%;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
