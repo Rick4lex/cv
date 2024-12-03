@@ -82,7 +82,6 @@ section {
 }
 
 section h3 {
-    Ricardo Alcarez
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 18px;
     color: #3A2E27;
@@ -102,14 +101,14 @@ section p, section ul {
 .tags-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;  /* Espaciado entre etiquetas */
+    gap: 10px;  
 }
 
 .tag {
-    background-color: #F7DC6F;  /* Color de fondo */
+    background-color: #F7DC6F; 
     color: #795548ff; 
     padding: 10px 15px;
-    border-radius: 20px;  /* Bordes redondeados */
+    border-radius: 20px; 
     font-size: 14px;
     text-transform: capitalize;
     display: inline-block;
@@ -133,6 +132,61 @@ section p, section ul {
 .filter-container {
     margin-bottom: 20px;
 }
+
+
+h3 {
+    color: #333;
+    border-bottom: 2px solid #F7DC6F;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.experience-item {
+    margin-bottom: 30px;
+}
+
+.date-range {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Estilo de las funciones */
+.functions {
+    display: flex;  /* Distribución horizontal */
+    flex-wrap: wrap;  /* Se ajusta a varias líneas si es necesario */
+    gap: 20px;  /* Espaciado entre columnas */
+    margin-top: 20px;
+}
+
+.function-column {
+    flex: 1;  /* Distribuye cada columna de manera equitativa */
+    background-color: #ffffff;  /* Color de fondo */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 240px;  /* Ancho mínimo para mantener la estructura */
+    box-sizing: border-box;
+}
+
+.function-column p {
+    font-weight: bold;
+    color: #795548ff;
+    margin-bottom: 10px;
+}
+
+.function-column ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #333;
+}
+
+.function-column li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
 
 .filter-btn {
     padding: 10px 15px;
@@ -193,7 +247,7 @@ section p, section ul {
 }
 
 .carousel-btn.prev {
-    left: 0;
+    left: 1;
 }
 
 .carousel-btn.next {
