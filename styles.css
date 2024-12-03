@@ -18,6 +18,8 @@ html {
     background-color: #F8EDD2;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;  /* Asegura que el padding no aumente el ancho total */
+    overflow: hidden;  /* Evita que el contenido se salga */
 }
 
 header {
@@ -48,16 +50,20 @@ header h2 {
     color: #795548ff;
 }
 
-@media (max-width: 768px) {
-    .content {
-        display: grid;
-        grid-template-columns: 2fr; /* En pantallas pequeñas, una sola columna */
-        gap: 10px;
+
+/* Media Query para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;  /* Aprovecha más el ancho */
+        padding: 10px;  /* Menos padding en móviles */
     }
 
-    .sidebar {
-        border-right: none; /* Elimina la separación en pantallas pequeñas */
-        padding-right: 0;
+    h2, h3, h4 {
+        font-size: 1em;  /* Tamaño más pequeño para dispositivos pequeños */
+    }
+
+    p {
+        font-size: 0.9em;  /* Reduce el tamaño del párrafo */
     }
 }
 
