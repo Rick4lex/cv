@@ -98,6 +98,30 @@ section p, section ul {
     color: #666;
 }
 
+/* Estilos de las etiquetas */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;  /* Espaciado entre etiquetas */
+}
+
+.tag {
+    background-color: #F7DC6F;  /* Color de fondo */
+    color: #795548ff; 
+    padding: 10px 15px;
+    border-radius: 20px;  /* Bordes redondeados */
+    font-size: 14px;
+    text-transform: capitalize;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.tag:hover {
+    background-color: #E08C79;  
+    color: #F8EDD2;
+    cursor: pointer;
+}
+
 .tab-content {
     display: none;
 }
