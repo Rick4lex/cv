@@ -25,7 +25,7 @@ const nextButton = document.querySelector('.carousel-btn.next');
 const prevButton = document.querySelector('.carousel-btn.prev');
 const filterButtons = document.querySelectorAll('.filter-btn');
 
-let currentSlide = 0;
+let currentSlide = 1;
 let slideWidth = 0;
 let slidesToShow = 3; // Predeterminado
 let totalSlides = slides.length;
