@@ -18,95 +18,103 @@ function activateSection(sectionId) {
     }
 }
 
-// Variables para el carrusel
+// Variables globales
 const track = document.querySelector('.carousel-track');
 const slides = Array.from(track.children);
-const nextButton = document.querySelector('.next');
-const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.carousel-btn.next');
+const prevButton = document.querySelector('.carousel-btn.prev');
+const filterButtons = document.querySelectorAll('.filter-btn');
+
 let currentSlide = 0;
-let slideWidth;
-let slidesToShow = 3; // Número predeterminado de ítems a mostrar
+let slideWidth = 0;
+let slidesToShow = 3; // Predeterminado
 let totalSlides = slides.length;
 
-// Función para ajustar el carrusel según el tamaño de la ventana
+// **1. Ajusta el ancho del carrusel según la pantalla**
 function setTrackWidth() {
     const containerWidth = document.querySelector('.carousel-container').offsetWidth;
 
-    // Ajusta cuántos ítems mostrar dependiendo del tamaño de la pantalla
-    if (containerWidth > 1024) {
-        slidesToShow = 3; // En pantallas grandes, mostramos 3 ítems
-    } else if (containerWidth > 768) {
-        slidesToShow = 2; // En pantallas medianas, mostramos 2 ítems
-    } else {
-        slidesToShow = 1; // En pantallas pequeñas, mostramos 1 ítem
-    }
+    // Determina cuántos ítems mostrar dependiendo del ancho de la pantalla
+    slidesToShow = containerWidth > 1024 ? 3 : containerWidth > 768 ? 2 : 1;
 
-    // Calcula el ancho de cada ítem y ajusta el ancho total de la pista
+    // Ajusta el ancho de cada slide
     slideWidth = containerWidth / slidesToShow;
     track.style.width = `${totalSlides * slideWidth}px`;
 
-    // Establece el ancho de cada ítem en el carrusel
     slides.forEach(slide => {
         slide.style.width = `${slideWidth}px`;
     });
 
-    // Reinicia el carrusel al primer ítem
-    moveToSlide(track, currentSlide);
+    // Ajusta la posición del carrusel
+    moveToSlide(currentSlide);
 }
 
-// Función para mover el carrusel
-function moveToSlide(track, currentSlide) {
-    const amountToMove = currentSlide * slideWidth;
-    track.style.transform = `translateX(-${amountToMove}px)`;
+// **2. Mueve el carrusel a la posición deseada**
+function moveToSlide(index) {
+    const distance = index * slideWidth;
+    track.style.transform = `translateX(-${distance}px)`;
 }
 
-
-// Evento para el botón "Siguiente"
+// **3. Cambia el slide con los botones de navegación**
 nextButton.addEventListener('click', () => {
-    currentSlide = (currentSlide + 1) % totalSlides; // Carrusel infinito
+    currentSlide = (currentSlide + 1) % totalSlides;
     moveToSlide(currentSlide);
 });
 
-// Evento para el botón "Anterior"
 prevButton.addEventListener('click', () => {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // Carrusel infinito
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
     moveToSlide(currentSlide);
 });
 
-// Ajustar el carrusel cuando la ventana cambie de tamaño
+// **4. Ajusta el carrusel al redimensionar la ventana**
 window.addEventListener('resize', setTrackWidth);
 
-// Llamada inicial para ajustar el carrusel al cargar
-setTrackWidth();
-
-// Filtro de portafolio
-const filterButtons = document.querySelectorAll('.filter-btn');
+// **5. Filtrado de portafolio**
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        const filter = button.getAttribute('data-filter');
-        let visibleItems = 0; // Contador para verificar cuántos ítems están visibles
+        const filter = button.dataset.filter;
 
-        slides.forEach(item => {
-            const category = item.getAttribute('data-category');
+        slides.forEach(slide => {
+            const category = slide.dataset.category;
+
+            // Muestra u oculta los ítems según el filtro
             if (filter === 'all' || category === filter) {
-                item.style.display = 'block';
-                visibleItems++;
+                slide.style.display = 'block';
             } else {
-                item.style.display = 'none';
+                slide.style.display = 'none';
             }
         });
-        
-        // Filtrar diapositivas visibles y ajustar el carrusel
-        const filteredSlides = slides.filter(slide => slide.style.display !== 'none');
-        totalSlides = filteredSlides.length;  // Recalcula el número total de ítems visibles
-        setTrackWidth(); // Ajusta el ancho de la pista del carrusel después del filtro
 
-        // Reinicia el carrusel al primer ítem
-        currentSlide = 0;
-        moveToSlide(track, currentSlide);
+        // Recalcula las diapositivas visibles
+        const visibleSlides = slides.filter(slide => slide.style.display !== 'none');
+        totalSlides = visibleSlides.length;
 
+        // Reajusta el carrusel después del filtrado
+        setTrackWidth();
+        currentSlide = 0; // Reinicia el índice
+        moveToSlide(currentSlide);
     });
 });
+
+// **6. Automatización del carrusel**
+let autoSlide = setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    moveToSlide(currentSlide);
+}, 5000);
+
+// **7. Reinicia el temporizador de auto-slide al interactuar manualmente**
+[nextButton, prevButton].forEach(button => {
+    button.addEventListener('click', () => {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            moveToSlide(currentSlide);
+        }, 5000);
+    });
+});
+
+// **8. Llama la función inicial**
+setTrackWidth();
 
 // Navegación de la sidebar
 document.querySelectorAll('.sidebar ul li a').forEach(link => {
