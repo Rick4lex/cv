@@ -87,13 +87,13 @@ function handleInfiniteLoop() {
 nextButton.addEventListener('click', () => {
     currentSlide++;
     moveToSlide(currentSlide);
-    setTimeout(handleInfiniteLoop, 500);
+    setTimeout(handleInfiniteLoop, 700);
 });
 
 prevButton.addEventListener('click', () => {
     currentSlide--;
     moveToSlide(currentSlide);
-    setTimeout(handleInfiniteLoop, 500);
+    setTimeout(handleInfiniteLoop, 700);
 });
 
 // **4. Ajusta el carrusel al redimensionar la ventana**
@@ -130,8 +130,8 @@ filterButtons.forEach(button => {
 let autoSlide = setInterval(() => {
     currentSlide++;
     moveToSlide(currentSlide);
-    setTimeout(handleInfiniteLoop, 500);
-}, 5000);
+    setTimeout(handleInfiniteLoop, 900);
+}, 7000);
 
 // **7. Reinicia el temporizador de auto-slide al interactuar manualmente**
 [nextButton, prevButton].forEach(button => {
@@ -140,8 +140,8 @@ let autoSlide = setInterval(() => {
         autoSlide = setInterval(() => {
             currentSlide++;
             moveToSlide(currentSlide);
-            setTimeout(handleInfiniteLoop, 500);
-        }, 5000);
+            setTimeout(handleInfiniteLoop, 900);
+        }, 7000);
     });
 });
 

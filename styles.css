@@ -251,7 +251,7 @@ h3 {
 
 .carousel-container {
     text-align: center;
-    background-color: #E08C79;
+    background-color: #F8EDD2;
     padding: 5px;
     position: relative;
     overflow: hidden;
@@ -274,7 +274,7 @@ h3 {
 /* La pista que contiene los ítems del carrusel */
 .carousel-track {
     display: flex;
-    gap: 20px;
+    gap: 5px;
     transition: transform 0.5s ease-in-out;
 }
 
@@ -302,7 +302,6 @@ h3 {
     text-align: center;
     color: #3A2E27;
     background: #F7DC6F;
-    margin: 5px;
 }
 
 /* Botones de navegación */
@@ -313,10 +312,9 @@ h3 {
     background: #00a6edff;
     color: white;
     border: none;
-    font-size: 2rem;
+    font-size: 1rem;
     cursor: pointer;
     z-index: 10;
-    padding: 5px 10px;
     transition: background 0.3s;
 }
 
@@ -327,12 +325,12 @@ h3 {
 
 .carousel-btn.prev {
     left: 10px;
-    border-radius: 10px;
+    border-radius: 3px;
 }
 
 .carousel-btn.next {
     right: 10px;
-    border-radius: 10px;
+    border-radius: 3px;
 }
 
 /* Filtro */
