@@ -25,10 +25,20 @@ const nextButton = document.querySelector('.carousel-btn.next');
 const prevButton = document.querySelector('.carousel-btn.prev');
 const filterButtons = document.querySelectorAll('.filter-btn');
 
-let currentSlide = 1;
+let currentSlide = 3;
 let slideWidth = 0;
 let slidesToShow = 3; // Predeterminado
 let totalSlides = slides.length;
+
+// **Clonar elementos para crear ciclo infinito**
+const firstClone = slides[0].cloneNode(true);
+const lastClone = slides[slides.length - 1].cloneNode(true);
+
+track.appendChild(firstClone); // Clona el primer slide al final
+track.insertBefore(lastClone, slides[0]); // Clona el último slide al principio
+
+const allSlides = Array.from(track.children); // Lista completa con clones
+
 
 // **1. Ajusta el ancho del carrusel según la pantalla**
 function setTrackWidth() {
@@ -41,29 +51,49 @@ function setTrackWidth() {
     slideWidth = containerWidth / slidesToShow;
     track.style.width = `${totalSlides * slideWidth}px`;
 
-    slides.forEach(slide => {
+    allSlides.forEach(slide => {
         slide.style.width = `${slideWidth}px`;
     });
 
     // Ajusta la posición del carrusel
-    moveToSlide(currentSlide);
+    moveToSlide(currentSlide, false);
 }
 
 // **2. Mueve el carrusel a la posición deseada**
-function moveToSlide(index) {
+function moveToSlide(index, withTransition = true) {
     const distance = index * slideWidth;
+    if (!withTransition) track.style.transition = 'none';
+    else track.style.transition = 'transform 0.5s ease-in-out';
+
     track.style.transform = `translateX(-${distance}px)`;
 }
 
+function handleInfiniteLoop() {
+    if (currentSlide >= allSlides.length - 1) {
+        track.style.transition = 'none';
+        currentSlide = 1; // Salta al primer slide real
+        moveToSlide(currentSlide, false);
+    }
+
+    if (currentSlide <= 0) {
+        track.style.transition = 'none';
+        currentSlide = allSlides.length - 2; // Salta al último slide real
+        moveToSlide(currentSlide, false);
+    }
+}
+
+
 // **3. Cambia el slide con los botones de navegación**
 nextButton.addEventListener('click', () => {
-    currentSlide = (currentSlide + 1) % totalSlides;
+    currentSlide++;
     moveToSlide(currentSlide);
+    setTimeout(handleInfiniteLoop, 500);
 });
 
 prevButton.addEventListener('click', () => {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    currentSlide--;
     moveToSlide(currentSlide);
+    setTimeout(handleInfiniteLoop, 500);
 });
 
 // **4. Ajusta el carrusel al redimensionar la ventana**
@@ -98,8 +128,9 @@ filterButtons.forEach(button => {
 
 // **6. Automatización del carrusel**
 let autoSlide = setInterval(() => {
-    currentSlide = (currentSlide + 1) % totalSlides;
+    currentSlide++;
     moveToSlide(currentSlide);
+    setTimeout(handleInfiniteLoop, 500);
 }, 5000);
 
 // **7. Reinicia el temporizador de auto-slide al interactuar manualmente**
@@ -107,8 +138,9 @@ let autoSlide = setInterval(() => {
     button.addEventListener('click', () => {
         clearInterval(autoSlide);
         autoSlide = setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides;
+            currentSlide++;
             moveToSlide(currentSlide);
+            setTimeout(handleInfiniteLoop, 500);
         }, 5000);
     });
 });

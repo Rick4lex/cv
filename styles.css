@@ -250,44 +250,59 @@ h3 {
 
 
 .carousel-container {
+    text-align: center;
+    background-color: #E08C79;
+    padding: 5px;
     position: relative;
-    width: 100%;
     overflow: hidden;
-    margin: 20px 0;
-    color: #181515;
 }
 
-.carousel-container img{
-    border-radius: 10px;
-    max-width: 100%;
+.carousel-container img {
+    width: 100%;
+    /* La imagen ocupará todo el ancho de la tarjeta */
     height: auto;
+    /* Mantén las proporciones */
+    border-radius: 10px 10px 0 0;
 }
 
 .carousel-track-container {
+    display: flex;
+    justify-content: center;
     overflow: hidden;
-    width: 100%;
 }
+
 /* La pista que contiene los ítems del carrusel */
 .carousel-track {
     display: flex;
+    gap: 20px;
     transition: transform 0.5s ease-in-out;
-    width: 100%;
 }
 
 /* Ítems del carrusel */
 .carousel-item {
-    flex: 0 0 auto;
-    box-sizing: border-box;
+    flex: 0 0 300px; /* Ancho fijo para las tarjetas */
+    margin: 10px;
+    background: #3A2E27;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
     text-align: center;
-    padding: 10px;
-    background-color: #e7cab9;
-    border: 1px solid #ddd;
-    margin: 5px;
-    
+    padding: 5px;
+    flex: 0 0 auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.carousel-item P {
+.carousel-item P, h4, button {
     text-align: center;
+    color: #F8EDD2;
+    margin: 5px;
+}
+
+.carousel-item button {
+    text-align: center;
+    color: #3A2E27;
+    background: #F7DC6F;
+    margin: 5px;
 }
 
 /* Botones de navegación */
@@ -295,20 +310,29 @@ h3 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background: #00a6edff;
     color: white;
     border: none;
-    padding: 10px;
+    font-size: 2rem;
     cursor: pointer;
-    z-index: 1;
+    z-index: 10;
+    padding: 5px 10px;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+    background: rgb(14, 150, 208);
+    color: white;
 }
 
 .carousel-btn.prev {
     left: 10px;
+    border-radius: 10px;
 }
 
 .carousel-btn.next {
     right: 10px;
+    border-radius: 10px;
 }
 
 /* Filtro */
