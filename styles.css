@@ -259,13 +259,8 @@ h3 {
     width: 100%;
 }
 
-.carousel-container img {
-    width: 100%;
-    /* La imagen ocupará todo el ancho de la tarjeta */
-    height: auto;
-    /* Mantén las proporciones */
-    border-radius: 10px 10px 0 0;
-}
+
+
 
 .carousel-track-container {
     display: flex;
@@ -287,11 +282,15 @@ h3 {
     background: #3A2E27;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: 10%;
     text-align: center;
     padding: 5px;
     flex: 0 0 auto; /* Ancho fijo para las tarjetas */
     transition: transform 0.3s;
+}
+
+.carousel-container img {
+    border-radius: 10px 10px 0 0;
 }
 
 .carousel-item P, h4, button {
@@ -373,4 +372,46 @@ footer {
 
 .footer-nav a:hover {
     text-decoration: underline;
+}
+
+/* Media queries para el carrusel en dispositivos móviles */
+@media (max-width: 768px) {
+    .carousel-container {
+        padding: 0;
+        margin: 10px -10px;
+    }
+
+    .carousel-item {
+        width: 75%; /* Una tarjeta por vista en móvil */
+        margin: 0 5px;
+    }
+
+    .carousel-track {
+        padding: 10px 0;
+    }
+
+    .carousel-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Ajustar imágenes dentro del carrusel */
+    .carousel-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Mejorar los botones de filtro */
+    .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .filter-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+        flex: 1;
+        min-width: 80px;
+    }
 }
