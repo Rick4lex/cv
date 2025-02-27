@@ -94,8 +94,8 @@ header h2 {
 /* Media Query para pantallas pequeñas (móviles) */
 @media (max-width: 480px) {
     .container {
-        width: 95%;  /* Aprovecha más el ancho */
-        padding: 10px;  /* Menos padding en móviles */
+        width: 100%;  /* Aprovecha más el ancho */
+        padding: 7px;  /* Menos padding en móviles */
     }
 
     h2, h3, h4 {
@@ -105,6 +105,7 @@ header h2 {
     p {
         font-size: 0.9em;  /* Reduce el tamaño del párrafo */
     }
+
 }
 
 .sidebar ul {
@@ -255,6 +256,7 @@ h3 {
     padding: 5px;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .carousel-container img {
@@ -274,22 +276,22 @@ h3 {
 /* La pista que contiene los ítems del carrusel */
 .carousel-track {
     display: flex;
-    gap: 5px;
-    transition: transform 0.5s ease-in-out;
+    will-change: scroll-position; 
+    width: 200px;
+    transition: transform 0.7s ease-in-out;
 }
 
 /* Ítems del carrusel */
-.carousel-item {
-    flex: 0 0 300px; /* Ancho fijo para las tarjetas */
-    margin: 10px;
+.carousel-item { 
+    margin: 7px;
     background: #3A2E27;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 100%;
     text-align: center;
     padding: 5px;
-    flex: 0 0 auto;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 0 0 auto; /* Ancho fijo para las tarjetas */
+    transition: transform 0.3s;
 }
 
 .carousel-item P, h4, button {

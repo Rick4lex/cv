@@ -26,7 +26,7 @@ const prevButton = document.querySelector('.carousel-btn.prev');
 const filterButtons = document.querySelectorAll('.filter-btn');
 
 let currentSlide = 3;
-let slideWidth = 0;
+let slideWidth = slides[0].getBoundingClientRect().width;
 let slidesToShow = 3; // Predeterminado
 let totalSlides = slides.length;
 
@@ -51,7 +51,7 @@ function setTrackWidth() {
     slideWidth = containerWidth / slidesToShow;
     track.style.width = `${totalSlides * slideWidth}px`;
 
-    allSlides.forEach(slide => {
+    Array.from(track.children).forEach(slide => {
         slide.style.width = `${slideWidth}px`;
     });
 
